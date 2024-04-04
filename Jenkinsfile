@@ -51,7 +51,7 @@ node {
     // 定义一个Stage,名为"Push Images"
     stage('Push Images') {
         // 连接到你的Docker镜像仓库,需要使用acr-credentials凭据
-        docker.withRegistry('https://your-registry.azurecr.io', 'acr-credentials') {
+        docker.withRegistry('https://your-registry.azurecr.io', 'jenkins-demo') {
             // 'acr-credentials'只是一个凭据ID的字符串标识。
             // 这个ID需要在Jenkins的"凭据"管理界面中定义一个凭据,关联一个用于访问Docker镜像仓库的用户名和密码/访问令牌。
             // 定义凭据的流程是:
