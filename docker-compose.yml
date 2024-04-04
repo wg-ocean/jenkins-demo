@@ -12,7 +12,7 @@ services:
 #    image: your-frontend-image:${BUILD_ID}
 #    ports:
 #      - 80:80
-#
+# 啊手动阀手动阀第三方
 #  db:
 #    image: your-mysql-image
 #    environment:
