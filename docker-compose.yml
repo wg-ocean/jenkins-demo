@@ -1,0 +1,24 @@
+version: '3'
+services:
+  
+  backend:
+    image: jenkins_java:${BUILD_ID}
+    ports:
+      - 8080:6333
+#    depends_on:
+#      - db
+  
+#  frontend:
+#    image: your-frontend-image:${BUILD_ID}
+#    ports:
+#      - 80:80
+#
+#  db:
+#    image: your-mysql-image
+#    environment:
+#      MYSQL_ROOT_PASSWORD: your-password
+#    volumes:
+#      - db-data:/var/lib/mysql
+
+#volumes:
+#  db-data:
