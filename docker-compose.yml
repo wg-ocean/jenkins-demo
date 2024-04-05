@@ -4,7 +4,7 @@ services:
   backend:
     image: jenkins_java:${BUILD_ID}
     ports:
-      - 8080:6333
+      - 7333:6333
 #    depends_on:
 #      - db
   
