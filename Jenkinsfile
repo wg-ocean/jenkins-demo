@@ -24,7 +24,7 @@ node {
             // "." 表示使用当前目录下的Dockerfile文件来构建镜像
             // def backendImage = docker.build("jenkins_java:${env.BUILD_ID}", ".")
             // 运行jar
-            sh 'java -jar jenkins-demo-test-1.0-SNAPSHOT.jar'
+            sh 'java -jar ./target/jenkins-demo-test-1.0-SNAPSHOT.jar'
         }
     }
 }
