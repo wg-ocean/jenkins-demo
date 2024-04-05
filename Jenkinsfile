@@ -8,7 +8,6 @@ node {
 }
 
 // 在一个Node上执行
-// 阿斯顿发射点发生阿斯顿发生撒旦发射点发的
 node {
     // 定义一个Stage,名为"Build Backend"
     stage('Build Backend') {
