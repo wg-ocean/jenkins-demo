@@ -1,9 +1,16 @@
 # 使用 Java 8 作为基础镜像
 FROM java:8
 
+# 如果容器实现没有准备docker,即docker命令找不到,就把这两名命令放出来
+#RUN apt-get update && \
+#    apt-get install -y docker.io
+
 # 设置工作目录
 #操作将在app目录下进行
 WORKDIR /app
+
+# 以 root 用户身份执行命令
+USER root
 
 # 将数据卷挂载到工作目录
 VOLUME /app/data
