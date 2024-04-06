@@ -23,7 +23,7 @@ node {
             // ${env.BUILD_ID} 是一个Jenkins环境变量,代表当前构建的唯一ID,用作镜像标签
             // "." 表示使用当前目录下的Dockerfile文件来构建镜像
             // def backendImage = docker.build("jenkins_java:${env.BUILD_ID}", ".")
-            // 运行jarrrrrrrrrraaaaaaaaaa
+            // 运行
             sh 'java -jar ./target/jenkins-demo-test-1.0-SNAPSHOT.jar'
         }
     }
