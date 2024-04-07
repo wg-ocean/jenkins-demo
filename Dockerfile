@@ -1,5 +1,5 @@
 # 使用 Java 8 作为基础镜像
-FROM java:8
+FROM java:21
 
 # 如果容器实现没有准备docker,即docker命令找不到,就把这两名命令放出来
 #RUN apt-get update && \
@@ -25,4 +25,4 @@ EXPOSE 6333
 # 在/app这个目录下执行如下命令
 # 自定义 CMD ["java", "-jar", "/app/data/oa.jar"]
 # CMD ["java", "-Xms512m", "-Xmx1024m", "-jar", "oa.jar"]
-CMD ["java", "-jar", "./target/jenkins-demo-test-1.0-SNAPSHOT.jar"]
+CMD ["java", "-jar", "./app/data/jenkins-demo-test-1.0-SNAPSHOT.jar"]
