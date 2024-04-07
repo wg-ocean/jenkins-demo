@@ -20,7 +20,7 @@ pipeline {
 				dir('./') {
 					sh 'mvn clean package'
 					script {
-						def backendImage = docker.build("jenkins_java:${env.BUILD_ID}", ".")
+						def backendImage = docker.build("crqyuee/oa_test1:${env.BUILD_ID}", ".")
 						// 在 Build Backend 阶段内定义 backendImage
 						env.BACKEND_IMAGE = backendImage // 将镜像名称保存到环境变量中
 					}
