@@ -25,4 +25,4 @@ EXPOSE 6333
 # 在/app这个目录下执行如下命令
 # 自定义 CMD ["java", "-jar", "/app/data/oa.jar"]
 # CMD ["java", "-Xms512m", "-Xmx1024m", "-jar", "oa.jar"]
-CMD ["java", "-jar", "/app/data/jenkins-demo-test-1.0-SNAPSHOT.jar"]
+CMD ["java", "-jar", "./target/jenkins-demo-test-1.0-SNAPSHOT.jar"]
