@@ -30,13 +30,21 @@ pipeline {
 
 		stage('Push Images') {
 			steps {
+				// script {
+				// 	docker.withRegistry('https://registry-1.docker.io/v2/', 'docker') {
+				// 		// 获取环境变量中的镜像名称
+				// 		def backendImage = env.BACKEND_IMAGE
+				// 		docker.image(backendImage).push() // 使用镜像名称推送镜像
+				// 	}
+				// }
 				script {
-					docker.withRegistry('https://registry-1.docker.io/v2/', 'docker') {
-						// 获取环境变量中的镜像名称
-						def backendImage = env.BACKEND_IMAGE
-						docker.image(backendImage).push() // 使用镜像名称推送镜像
-					}
-				}
+            				// 获取环境变量中的镜像名称
+            				def backendImage = env.BACKEND_IMAGE
+            				echo "Pushing image: ${backendImage}" // 打印镜像名称
+            				docker.withRegistry('https://registry-1.docker.io/v2/', 'docker') {
+                				docker.image(backendImage).push() // 使用镜像名称推送镜像
+            				}
+        			}
 			}
 		}
 
