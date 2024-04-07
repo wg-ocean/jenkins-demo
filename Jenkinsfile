@@ -8,6 +8,8 @@ pipeline {
 
 	// rrr零零零零
 	stages {
+		def backendImage // 定义在全局范围
+
 		stage('Pull Code') {
 			steps {
 				checkout scm
@@ -20,7 +22,7 @@ pipeline {
 				dir('./') {
 					sh 'mvn clean package'
 					script {
-						def backendImage = docker.build("jenkins_java:${env.BUILD_ID}", ".")
+						backendImage = docker.build("jenkins_java:${env.BUILD_ID}", ".") // 将定义移动到这里
 					}
 				}
 			}
