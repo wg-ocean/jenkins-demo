@@ -24,7 +24,7 @@ pipeline {
 						// 在 Build Backend 阶段内定义 backendImage
 						env.BACKEND_IMAGE = backendImage // 将镜像名称保存到环境变量中
 						// 为镜像打标签
-                        			sh "docker tag ${backendImage.id} crqyuee/oa_test1:${env.BUILD_ID}"
+						sh "docker tag ${backendImage.id} crqyuee/oa_test1:${env.BUILD_ID}"
 					}
 				}
 			}
@@ -33,16 +33,16 @@ pipeline {
 		stage('Push Images') {
 			steps {
 				script {
-            				// 获取环境变量中的镜像名称
-            				def backendImage = env.BACKEND_IMAGE
+					// 获取环境变量中的镜像名称
+					def backendImage = env.BACKEND_IMAGE
 					echo "Pushing image: ${backendImage}" // 打印镜像名称
 					echo "crqyuee/oa_test1:${env.BUILD_ID}"
 
-					
-            				docker.withRegistry('https://registry-1.docker.io/v2/', 'docker') {
-                				docker.image("crqyuee/oa_test1:${env.BUILD_ID}").push() // 使用镜像名称推送镜像
-            				}
-        			}
+
+					docker.withRegistry('https://registry-1.docker.io/v2/', 'docker') {
+						docker.image("crqyuee/oa_test1:${env.BUILD_ID}").push() // 使用镜像名称推送镜像
+					}
+				}
 			}
 		}
 

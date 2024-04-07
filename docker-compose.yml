@@ -3,14 +3,14 @@ services:
   
   backend:
     container_name: java_container1
-    image: crqyuee/oa_test1:${BUILD_ID} 
+    image: crqyuee/oa_test1:${BUILD_ID}
     ports:
       - 7333:6333
     volumes:
       - /app/data:/app/data
-#    depends_on:
-#      - db
-  
+  #    depends_on:
+  #      - db
+
 #  frontend:
 #    image: your-frontend-image:${BUILD_ID}
 #    ports:

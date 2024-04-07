@@ -1,5 +1,5 @@
 # 使用 Java 8 作为基础镜像
-FROM java:21
+FROM mdsol/java21-jdk
 
 # 如果容器实现没有准备docker,即docker命令找不到,就把这两名命令放出来
 #RUN apt-get update && \
