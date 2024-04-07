@@ -1,10 +1,6 @@
 pipeline {
 	agent any
 
-	options {
-        	encoding 'UTF-8'
-   	}
-
 	// environment {
 	// 	DOCKER_HOST = 'tcp://docker-desktop:2375'
 	// 	DOCKER_TLS_VERIFY = '0'
