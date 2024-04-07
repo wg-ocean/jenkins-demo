@@ -16,7 +16,7 @@ USER root
 VOLUME /app/data
 
 # 将 JAR 文件复制到工作目录
-COPY ./target/jenkins-demo-test-1.0-SNAPSHOT.jar .
+COPY ./target/jenkins-demo-test-1.0-SNAPSHOT.jar /app
 
 # 暴露容器端口 6333
 EXPOSE 6333
@@ -25,4 +25,4 @@ EXPOSE 6333
 # 在/app这个目录下执行如下命令
 # 自定义 CMD ["java", "-jar", "/app/data/oa.jar"]
 # CMD ["java", "-Xms512m", "-Xmx1024m", "-jar", "oa.jar"]
-CMD ["java", "-jar", "./app/jenkins-demo-test-1.0-SNAPSHOT.jar"]
+CMD ["java", "-jar", "/app/jenkins-demo-test-1.0-SNAPSHOT.jar"]
