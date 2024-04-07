@@ -8,8 +8,6 @@ pipeline {
 
 	// rrr零零零零
 	stages {
-		def backendImage // 定义在全局范围
-
 		stage('Pull Code') {
 			steps {
 				checkout scm
@@ -22,7 +20,9 @@ pipeline {
 				dir('./') {
 					sh 'mvn clean package'
 					script {
-						backendImage = docker.build("jenkins_java:${env.BUILD_ID}", ".") // 将定义移动到这里
+						def backendImage = docker.build("jenkins_java:${env.BUILD_ID}", ".")
+						// 在 Build Backend 阶段内定义 backendImage
+						env.BACKEND_IMAGE = backendImage // 将镜像名称保存到环境变量中
 					}
 				}
 			}
@@ -32,7 +32,9 @@ pipeline {
 			steps {
 				script {
 					docker.withRegistry('https://registry-1.docker.io/v2/', 'docker') {
-						backendImage.push()
+						// 获取环境变量中的镜像名称
+						def backendImage = env.BACKEND_IMAGE
+						docker.image(backendImage).push() // 使用镜像名称推送镜像
 					}
 				}
 			}
