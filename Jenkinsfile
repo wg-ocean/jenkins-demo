@@ -6,7 +6,7 @@ pipeline {
 	// 	DOCKER_TLS_VERIFY = '0'
 	// }
 
-	// rrr
+	// rrr零零零零
 	stages {
 		stage('Pull Code') {
 			steps {
