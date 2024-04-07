@@ -28,7 +28,7 @@ pipeline {
 		stage('Push Images') {
 			steps {
 				script {
-					docker.withRegistry('https://registry-1.docker.io/v2/', 'acr-credentials') {
+					docker.withRegistry('https://registry-1.docker.io/v2/', 'docker') {
 						backendImage.push()
 					}
 				}
