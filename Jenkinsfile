@@ -25,7 +25,9 @@ pipeline {
 						env.BACKEND_IMAGE = backendImage // 将镜像名称保存到环境变量中
 						// 添加修改镜像标签的语句
             					// docker.tag(backendImage.id, "crqyuee/oa_test1:latest")
-						docker.tag(backendImage.id, "crqyuee/oa_test1:${env.BUILD_ID}")
+						// docker.tag(backendImage.id, "crqyuee/oa_test1:${env.BUILD_ID}")
+						// 为镜像打标签
+                        			sh "docker tag ${backendImage.id} crqyuee/oa_test1:${env.BUILD_ID}"
 					}
 				}
 			}
