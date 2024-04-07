@@ -3,12 +3,9 @@ pipeline {
 
 	// environment {
 	// 	DOCKER_HOST = 'tcp://docker-desktop:2375'
-
-
 	// 	DOCKER_TLS_VERIFY = '0'
 	// }
 
-	// rrrrr
 	stages {
 		stage('Pull Code') {
 			steps {
@@ -21,7 +18,6 @@ pipeline {
 				checkout scm
 				dir('./') {
 					sh 'mvn clean package'
-
 					script {
 						def backendImage = docker.build("jenkins_java:${env.BUILD_ID}", ".")
 					}
@@ -32,10 +28,7 @@ pipeline {
 		stage('Push Images') {
 			steps {
 				script {
-					
-					docker.withRegistry('https://registry-1.docker.io/v2/', 'acr-credentials') 
-					
-					{
+					docker.withRegistry('https://registry-1.docker.io/v2/', 'acr-credentials') {
 						backendImage.push()
 					}
 				}
@@ -46,7 +39,6 @@ pipeline {
 			steps {
 				sh 'docker-compose down'
 				sh 'docker-compose up -d'
-
 			}
 		}
 	}
