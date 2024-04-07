@@ -1,10 +1,10 @@
 pipeline {
 	agent any
 
-	environment {
-		DOCKER_HOST = 'tcp://docker-desktop:2375'
-		DOCKER_TLS_VERIFY = '0'
-	}
+	// environment {
+	// 	DOCKER_HOST = 'tcp://docker-desktop:2375'
+	// 	DOCKER_TLS_VERIFY = '0'
+	// }
 
 	stages {
 		stage('Pull Code') {
