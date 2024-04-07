@@ -20,12 +20,9 @@ pipeline {
 				dir('./') {
 					sh 'mvn clean package'
 					script {
-						def backendImage = docker.build("crqyuee/oa_test1:${env.BUILD_ID}", ".")
+						def backendImage = docker.build("java_images:${env.BUILD_ID}", ".")
 						// 在 Build Backend 阶段内定义 backendImage
 						env.BACKEND_IMAGE = backendImage // 将镜像名称保存到环境变量中
-						// 添加修改镜像标签的语句
-            					// docker.tag(backendImage.id, "crqyuee/oa_test1:latest")
-						// docker.tag(backendImage.id, "crqyuee/oa_test1:${env.BUILD_ID}")
 						// 为镜像打标签
                         			sh "docker tag ${backendImage.id} crqyuee/oa_test1:${env.BUILD_ID}"
 					}
