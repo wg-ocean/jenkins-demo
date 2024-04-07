@@ -3,7 +3,7 @@ services:
   
   backend:
     container_name: java_container1
-    image: crqyuee/oa_test1:$${env.BUILD_ID} # 双美元符号 $$ 来转义 $ 符号，以确保 ${env.BUILD_ID} 被正确地解析
+    image: crqyuee/oa_test1:${BUILD_ID} 
     ports:
       - 7333:6333
 #    depends_on:
