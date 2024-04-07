@@ -18,15 +18,19 @@ pipeline {
 				checkout scm
 				dir('./') {
 					sh 'mvn clean package'
-					def backendImage = docker.build("jenkins_java:${env.BUILD_ID}", ".")
+					script {
+						def backendImage = docker.build("jenkins_java:${env.BUILD_ID}", ".")
+					}
 				}
 			}
 		}
 
 		stage('Push Images') {
 			steps {
-				docker.withRegistry('https://registry-1.docker.io/v2/', 'acr-credentials') {
-					backendImage.push()
+				script {
+					docker.withRegistry('https://registry-1.docker.io/v2/', 'acr-credentials') {
+						backendImage.push()
+					}
 				}
 			}
 		}
