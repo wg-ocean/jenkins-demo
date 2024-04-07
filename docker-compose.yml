@@ -3,7 +3,7 @@ services:
   
   backend:
     container_name: java_container1
-    image: jenkins_java:${BUILD_ID}
+    image: crqyuee/oa_test1:${BUILD_ID}
     ports:
       - 7333:6333
 #    depends_on:
