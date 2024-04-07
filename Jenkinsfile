@@ -32,35 +32,15 @@ pipeline {
 
 		stage('Push Images') {
 			steps {
-				// script {
-				// 	docker.withRegistry('https://registry-1.docker.io/v2/', 'docker') {
-				// 		// 获取环境变量中的镜像名称
-				// 		def backendImage = env.BACKEND_IMAGE
-				// 		docker.image(backendImage).push() // 使用镜像名称推送镜像
-				// 	}
-				// }
 				script {
             				// 获取环境变量中的镜像名称
             				def backendImage = env.BACKEND_IMAGE
 					echo "Pushing image: ${backendImage}" // 打印镜像名称
+					echo "crqyuee/oa_test1:${env.BUILD_ID}"
 
-					// 获取镜像ID并打印
-					def imageId = backendImage.getImageId()
-					echo "Pushing image: ${imageId}" // 打印镜像名称
-
-					
-					// 获取完整的镜像名称
-					def fullImageName = backendImage.toString()
-
-					// 从完整的镜像名称中提取出镜像名
-					def imageName = fullImageName.tokenize(':')[0]
-					def imageNameTwo = fullImageName.tokenize(':')[1]
-					echo "Pushing image: ${imageName}"
-					echo "Pushing image: ${imageNameTwo}"
-					echo "Pushing image: ${imageNameTwo}:${imageNameTwo}"
 					
             				docker.withRegistry('https://registry-1.docker.io/v2/', 'docker') {
-                				docker.image(backendImage).push() // 使用镜像名称推送镜像
+                				docker.image("crqyuee/oa_test1:${env.BUILD_ID}").push() // 使用镜像名称推送镜像
             				}
         			}
 			}
